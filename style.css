@@ -45,6 +45,7 @@ input[type="text"]{
     font-size: 16px;
 }
 .add-symbol{
+    cursor: pointer;
     color:#fff;
     font-weight: 700;
     border: none;
@@ -80,6 +81,7 @@ li{
     padding-inline:0.8rem;
 }
 button{
+    cursor: pointer;
     transform: translateY(-6px);
     border: none;
     outline: none;
@@ -96,6 +98,7 @@ justify-content: space-between;
 gap:6rem;
 }
 .clear-btn button{
+    cursor: pointer;
     background-color: rgb(80, 19, 178);
     color:#fff;
     font-weight: 700;
