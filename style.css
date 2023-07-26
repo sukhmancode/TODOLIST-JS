@@ -95,7 +95,7 @@ padding:1rem;
 display: flex;
 align-items: center;
 justify-content: space-between;
-gap:6rem;
+gap:6.1rem;
 }
 .clear-btn button{
     cursor: pointer;
