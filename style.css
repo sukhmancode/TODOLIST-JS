@@ -22,7 +22,7 @@ body{
     background-color: #fff;
     box-shadow: 0 0 10px #ccc;
     min-width: 350px;
-    height:70vh;
+    min-height:80vh;
     padding:1rem;
     border-radius: 0.4rem;
     gap:1rem;
@@ -56,14 +56,19 @@ body{
 }
 .add-symbol{
     cursor: pointer;
-    color:#fff;
     font-weight: 700;
-    border: none;
-    outline: none;
-    transform: translateY(-1px);
-    padding:0.3rem 1rem;
+
+ 
+
     border-radius: 5px;
+    
+}
+#btn{
+    color:#fff;
+    padding:0.5rem 1rem;
     background-color: rgb(80, 19, 178);
+    transform: translateY(0px);
+    font-size: 18px;;
 }
 .list-items{
     padding:0.2rem;
@@ -89,7 +94,25 @@ li{
     font-size: 15px;
     display: block;
     padding-block:0.1rem;
+
     padding-inline:0.8rem;
+}
+#fly-by{
+    background-color: #fff;
+    padding:0.5rem;
+    transform: translateY(-100px);
+    animation-duration: 1s;
+
+}
+
+@keyframes fly {
+   from{
+    transform: translateY(-100px);
+   }
+   to{
+    transform: translateY(0px);
+   }
+    
 }
 button{
     cursor: pointer;
@@ -116,5 +139,5 @@ gap:6.1rem;
 }
 button{
     font-weight: 700;
-    color:#fff;
+    
 }

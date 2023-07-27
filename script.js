@@ -3,10 +3,14 @@ const button=document.getElementById('btn')
 const input=document.getElementById('input')
 const taskcount=document.getElementById('count')
 const clear=document.getElementById('clear')
+const fly=document.getElementById('fly-by');
 
 
 
-button.addEventListener('click',function(){
+button.addEventListener('click',(e)=>{
+
+    e.preventDefault();
+ 
     if(input.value===""){
         document.querySelector('.input-error').innerHTML="Enter something"
         document.getElementById('symbol').style.translate="0px -9px"
@@ -15,16 +19,12 @@ button.addEventListener('click',function(){
         document.querySelector('.input-error').innerHTML="";
         taskcount.innerHTML++;
        
-
     }
     const inputs=document.createElement('input');
-   
     inputs.type="text"
     inputs.setAttribute('readonly','readonly')
     inputs.value=input.value;
-   
     inputs.classList.add('input-list')
-
     const div=document.createElement('div');
     const ul=document.createElement('ul');
     const li=document.createElement('li');
@@ -36,7 +36,6 @@ button.addEventListener('click',function(){
     ul.appendChild(li)
     div.appendChild(ul);
     listcontainer.appendChild(div);
-
     let savebutton=document.createElement('button');
     savebutton.innerText="EDIT"
     savebutton.style.backgroundColor="green";
@@ -49,10 +48,15 @@ button.addEventListener('click',function(){
             inputs.focus();
             savebutton.innerText="SAVE";
             savebutton.style.backgroundColor="tomato";
-        }else{
+            
+       
+        }else if(inputs.value==""){
+            savebutton.parentElement.remove();
+        }
+        else{
             inputs.setAttribute('readonly','readonly');
-            savebutton.innerText="EDIT"
-            savebutton.style.backgroundColor="green"
+            savebutton.innerText="EDIT";
+            savebutton.style.backgroundColor="green";
         }
     })
 
@@ -69,7 +73,9 @@ taskcount.innerHTML--;
     inputs.addEventListener('click',function(){
         inputs.style.textDecoration="line-through";
         inputs.style.fontStyle="Italic";
-        taskcount.innerHTML--;
+
+   if(taskcount.innerHTML==0) return;
+     taskcount.innerHTML--;
     })
     clear.addEventListener('click',function(){
         removebtn.parentElement.parentElement.remove();
