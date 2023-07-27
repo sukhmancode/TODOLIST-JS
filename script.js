@@ -17,6 +17,13 @@ button.addEventListener('click',function(){
        
 
     }
+    const inputs=document.createElement('input');
+   
+    inputs.type="text"
+    inputs.setAttribute('readonly','readonly')
+    inputs.value=input.value;
+   
+    inputs.classList.add('input-list')
 
     const div=document.createElement('div');
     const ul=document.createElement('ul');
@@ -24,11 +31,30 @@ button.addEventListener('click',function(){
     li.style.listStyle="none"
     li.style.marginBottom="10px"
     const text=document.createTextNode(input.value);
-    li.appendChild(text);
+    input.appendChild(text);
+    li.appendChild(inputs);
     ul.appendChild(li)
     div.appendChild(ul);
     listcontainer.appendChild(div);
+
+    let savebutton=document.createElement('button');
+    savebutton.innerText="EDIT"
+    savebutton.style.backgroundColor="green";
+    ul.appendChild(savebutton);
+
     input.value="";
+    savebutton.addEventListener('click',()=>{
+        if(savebutton.innerText.toLowerCase()=="edit"){
+            inputs.removeAttribute('readonly');
+            inputs.focus();
+            savebutton.innerText="SAVE";
+            savebutton.style.backgroundColor="tomato";
+        }else{
+            inputs.setAttribute('readonly','readonly');
+            savebutton.innerText="EDIT"
+            savebutton.style.backgroundColor="green"
+        }
+    })
 
 let removebtn=document.createElement('button')
 removebtn.innerHTML='<i class="fa-solid fa-trash-can"></i>';
@@ -37,13 +63,17 @@ removebtn.style.color="white"
 ul.appendChild(removebtn) 
 removebtn.addEventListener('click',function(){
 removebtn.parentElement.remove();
+if(taskcount.innerHTML==0) return;
 taskcount.innerHTML--;
 })
-    li.addEventListener('click',function(){
-        li.style.textDecoration="line-through"
+    inputs.addEventListener('click',function(){
+        inputs.style.textDecoration="line-through";
+        inputs.style.fontStyle="Italic";
+        taskcount.innerHTML--;
     })
     clear.addEventListener('click',function(){
         removebtn.parentElement.parentElement.remove();
         taskcount.innerHTML=0;
     })
 })
+
